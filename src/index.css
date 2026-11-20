@@ -1,2 +1,39 @@
 @import "tailwindcss";
 
+@theme {
+  /* Your base colors */
+  --color-primary: #d4f0fc;
+  --color-secondary: #01303f;
+  --color-accent: #02a9f7;
+
+  /* Primary tints (backgrounds, cards, hover states) */
+  --color-primary-50: #f0faff;
+  --color-primary-100: #d4f0fc;
+  --color-primary-200: #a9e0f7;
+
+  /* Secondary shades (text, navbar, footer, dark sections) */
+  --color-secondary-700: #0a4a5f;
+  --color-secondary-800: #01303f;
+  --color-secondary-900: #011f29;
+
+  /* Accent shades (buttons, links, focus rings) */
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #02a9f7;
+  --color-accent-600: #0284c7;
+  --color-accent-700: #0369a1; /* links and small text, passes AA on white */
+
+  /* Highlight (warm contrast for badges, ratings, "Featured") */
+  --color-highlight: #f59e0b;
+  --color-highlight-soft: #fef3c7;
+
+  /* Neutrals (slightly blue-tinted to match the brand) */
+  --color-surface: #ffffff;
+  --color-background: #f6fbfe;
+  --color-border: #d6e6ee;
+  --color-muted: #5b7a88;
+
+  /* Status */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+}
