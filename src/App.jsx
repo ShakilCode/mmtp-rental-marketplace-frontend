@@ -7,8 +7,17 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import VerifyEmailPage from "./pages/auth/VerifyEmailPage";
 import VerifyLoginOTPPage from "./pages/auth/VerifyLoginOTPPage";
 
+import PublicProductsPage from "./pages/products/PublicProductsPage";
+import ProductDetailsPage from "./pages/products/ProductDetailsPage";
+
 import RenterDashboard from "./pages/renter/RenterDashboard";
+
 import LenderDashboard from "./pages/lender/LenderDashboard";
+import MyProductsPage from "./pages/lender/MyProductsPage";
+import AddProductPage from "./pages/lender/AddProductPage";
+import EditProductPage from "./pages/lender/EditProductPage";
+import LenderProductDetailsPage from "./pages/lender/LenderProductDetailsPage";
+
 import AdminPage from "./pages/admin/AdminPage";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -20,15 +29,44 @@ function App() {
             <Routes>
 
                 {/* Public homepage */}
-                <Route path="/" element={<HomePage />} />
+                <Route
+                    path="/"
+                    element={<HomePage />}
+                />
 
-                {/* Authentication pages */}
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/verify-email" element={<VerifyEmailPage />} />
-                <Route path="/verify-otp" element={<VerifyLoginOTPPage />} />
+                {/* Public marketplace */}
+                <Route
+                    path="/products"
+                    element={<PublicProductsPage />}
+                />
 
-                {/* Renter dashboard */}
+                <Route
+                    path="/products/:productId"
+                    element={<ProductDetailsPage />}
+                />
+
+                {/* Authentication */}
+                <Route
+                    path="/login"
+                    element={<LoginPage />}
+                />
+
+                <Route
+                    path="/register"
+                    element={<RegisterPage />}
+                />
+
+                <Route
+                    path="/verify-email"
+                    element={<VerifyEmailPage />}
+                />
+
+                <Route
+                    path="/verify-otp"
+                    element={<VerifyLoginOTPPage />}
+                />
+
+                {/* Renter */}
                 <Route
                     path="/renter"
                     element={
@@ -38,7 +76,7 @@ function App() {
                     }
                 />
 
-                {/* Lender dashboard */}
+                {/* Lender */}
                 <Route
                     path="/lender"
                     element={
@@ -48,7 +86,43 @@ function App() {
                     }
                 />
 
-                {/* Admin panel */}
+                <Route
+                    path="/lender/products"
+                    element={
+                        <ProtectedRoute allowedRoles={["lender"]}>
+                            <MyProductsPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/lender/products/add"
+                    element={
+                        <ProtectedRoute allowedRoles={["lender"]}>
+                            <AddProductPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/lender/products/:productId"
+                    element={
+                        <ProtectedRoute allowedRoles={["lender"]}>
+                            <LenderProductDetailsPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/lender/products/:productId/edit"
+                    element={
+                        <ProtectedRoute allowedRoles={["lender"]}>
+                            <EditProductPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* Admin */}
                 <Route
                     path="/admin/*"
                     element={
@@ -58,8 +132,11 @@ function App() {
                     }
                 />
 
-                {/* Unknown pages */}
-                <Route path="*" element={<HomePage />} />
+                {/* Unknown route */}
+                <Route
+                    path="*"
+                    element={<HomePage />}
+                />
 
             </Routes>
 
